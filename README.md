@@ -8,8 +8,7 @@ Getting this stood up was pretty trivial. I installed everything locally instead
 
 Editor support in WebStorm is terrible - the benefits of typescript are significantly reduced without good editor support.
  
-Verified that I still have type safety benefits, for example trying to access `this.props.msg` as it should since `compiler` is the property 
-we are expecting. 
+Verified that I still have type safety benefits, for example trying to access `this.props.msg` it failed, as it should since `compiler` is the property we are expecting. 
 
 ```tsx
 import * as React from "react";
@@ -27,10 +26,8 @@ export class Hello extends React.Component<HelloProps, {}> {
 The error message wasn't quite what I expected though (I expected just `HelloProps` not `HelloProps & { children?: ReactNode; }`)
 
 > (7,43): error TS2339: Property 'msg' does not exist on type 'HelloProps & { children?: ReactNode; }'.
-
-I expect the error message will make more sense once I dig deeper but worth noting that
   
-Verified that I also receive error messaging when sending attributes that aren't expected
+Verified that I also receive error messaging when sending attributes that are not expected
  
 ```tsx
 <Hello compiler="TypeScript" framework="React" msg="some message" />,
